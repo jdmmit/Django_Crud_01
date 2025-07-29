@@ -21,7 +21,7 @@ from tasks import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Ruta para la vista hello_world
-    path('', views.hello_world, name='hello_world'),
-    # Assuming the same view handles signup
-    path('signup/', views.hello_world, name='signup'),
+    path('', views.home, name='home'),
+    # Suponiendo que la misma vista maneja el registro
+    path('signup/', views.signup, name='signup'),
 ]

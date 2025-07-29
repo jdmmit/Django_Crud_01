@@ -22,3 +22,7 @@ python3 manage.py runserver 127.0.0.1:3000
 ** Crear la aplicacion task
 
 python3 manage.py startapp tasks
+
+** Migrar datos
+
+python3 manage.py migrate
