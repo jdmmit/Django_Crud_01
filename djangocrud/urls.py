@@ -14,14 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from tasks import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # Ruta para la vista hello_world
-    path('', views.home, name='home'),
-    # Suponiendo que la misma vista maneja el registro
-    path('signup/', views.signup, name='signup'),
+    path("admin/", admin.site.urls),
+    # Ruta para el administrador de Django
+    path("", views.home, name="home"),
+    # ruta para la página de inicio o home
+    path("signup/", views.signup, name="signup"),
+    # ruta para la página de registro de usuarios
+    path("tasks/", views.tasks, name="tasks"),
+    # ruta para la página de tareas
+
 ]
