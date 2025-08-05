@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
 
 
@@ -57,3 +57,27 @@ def signup(request):
 def tasks(request):
     # Renderiza la plantilla "tasks.html" para mostrar las tareas del usuario
     return render(request, "tasks.html")
+
+
+def signout(request):
+    logout(request)
+    return redirect("home.html")
+
+
+def signin(request):
+    if request.method == "GET":
+        return render(request, "signin.html", {
+        "form": AuthenticationForm,
+    })
+    else:
+        user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
+        if user is None:
+            return render(request, "signin.html", {
+        "form": AuthenticationForm,
+        "error": "Username or Password is incorrect"})
+        else:
+            login(request, user)
+            return redirect("tasks")
+            
+        
+        

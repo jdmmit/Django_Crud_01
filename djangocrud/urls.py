@@ -28,5 +28,8 @@ urlpatterns = [
     # ruta para la página de registro de usuarios
     path("tasks/", views.tasks, name="tasks"),
     # ruta para la página de tareas
+    path("logout/", views.signout, name="logout"),
+    
+    path("signin/", views.signin, name="signin")
 
 ]
